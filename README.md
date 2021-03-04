@@ -1,17 +1,12 @@
 # RTST视频播放
 - 视频拉流解码库为`ffmpeg 4.2`
 - 图形渲染使用的是`MetalKit`
-- 主要代码路径: 
-    - `WGDispatch/Video`主要用来拉流和解码
-    - `WGDispatch/Metal`主要用来视频和图片的渲染
 
 ### 流程图
 ![流程图](RTSPPlayer.png)
 
 # 逻辑
 ### ffmpeg
-代码路径: `WGDispatch/Video/VideoPlayer.swift`
-
 #### 拉流
 ```swift
 // 拉流的参数
@@ -128,7 +123,6 @@ state = avcodec_receive_frame(mpCodecCtx, mpFrame)
 
 ### Metal
 #### 初始化
-代码路径`WGDispatch/Metal/MetalManager.swift`
 
 [GPU坐标参考文档](https://developer.apple.com/documentation/metal/using_a_render_pipeline_to_render_primitives)
 ![GPU坐标](GPUCoordinate.png)
@@ -180,7 +174,6 @@ let buffer = device.makeBuffer(bytes: &vertexs, length: MemoryLayout<Vertex>.str
 ```
 
 #### 渲染
-代码路径`WGDispatch/Metal/VideoMetal.swift`
 MTKView不支持YUV格式需要转换为BGRA格式
 
 [提交队列和提交缓冲区参考文档](https://developer.apple.com/documentation/metal/setting_up_a_command_structure)
